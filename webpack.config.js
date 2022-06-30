@@ -13,7 +13,6 @@ module.exports = {
     rules: [
       {
         test: /\.css/,
-        // 下から順に実行される
         use: [
           // JavaScript内のCSSをDOMに挿入する
           // {
@@ -28,6 +27,14 @@ module.exports = {
             loader: "css-loader",
           },
         ],
+      },
+      // 画像ファイルの依存関係を解決する
+      {
+        test: /\.(jpg|png|svg|gif)/,
+        type: "asset/resource",
+        generator: {
+          filename: "img/[name][ext]",
+        },
       },
     ],
   },
