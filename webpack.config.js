@@ -4,10 +4,10 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 
 module.exports = {
-  entry: "./src/index.js",
+  entry: "./src/js/script.js",
   output: {
     path: path.resolve(__dirname, "./dist"),
-    filename: "main.js",
+    filename: "js/script.js",
   },
   module: {
     rules: [
@@ -33,10 +33,12 @@ module.exports = {
   },
   plugins: [
     // CSSを別ファイルに出力する
-    new MiniCssExtractPlugin(),
+    new MiniCssExtractPlugin({
+      filename: 'css/style.css',
+    }),
     // HTMLファイルを生成する
     new HtmlWebpackPlugin({
-      template: "./src/index.html",
+      template: "./src/templates/index.html",
     }),
     // buildのたびに、output.pathディレクトリ内のすべてのファイルを削除する
     new CleanWebpackPlugin(),

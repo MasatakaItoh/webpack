@@ -5,7 +5,7 @@
   "author": "MasatakaItoh",
   "license": "ISC",
   "private": true,
-  "main": "src/index.js",
+  "main": "src/js/script.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
