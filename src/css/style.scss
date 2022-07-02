@@ -1,0 +1,10 @@
+@use "footer";
+
+$primary_color: skyblue;
+
+body {
+  color: red;
+  .heading {
+    color: $primary_color;
+  }
+}

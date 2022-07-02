@@ -13,7 +13,7 @@ module.exports = {
   },
   // webpack-dev-server用の設定
   devServer: {
-    watchFiles: ['src/**/*.pug'],
+    watchFiles: ['src/**/*.pug', 'src/**/*.scss'],
   },
   module: {
     rules: [
@@ -33,7 +33,7 @@ module.exports = {
         ],
       },
       {
-        test: /\.css/,
+        test: /\.(css|sass|scss)/,
         use: [
           // JavaScript内のCSSをDOMに挿入する or CSSを別ファイルに出力する
           {
@@ -43,6 +43,10 @@ module.exports = {
           {
             loader: "css-loader",
           },
+          {
+            loader: "sass-loader",
+          },
+          // TODO Autoprefixerの対応
         ],
       },
       // 画像ファイルの依存関係を解決する
