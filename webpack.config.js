@@ -11,6 +11,10 @@ module.exports = {
     path: path.resolve(__dirname, "./dist"),
     filename: "js/script.js",
   },
+  // webpack-dev-server用の設定
+  devServer: {
+    watchFiles: ['src/**/*.pug'],
+  },
   module: {
     rules: [
       {
