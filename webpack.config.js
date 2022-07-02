@@ -3,6 +3,8 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 
+const isInlineCss = false;
+
 module.exports = {
   entry: "./src/js/script.js",
   output: {
@@ -29,13 +31,9 @@ module.exports = {
       {
         test: /\.css/,
         use: [
-          // JavaScript内のCSSをDOMに挿入する
-          // {
-          //   loader: "style-loader",
-          // },
-          // CSSを別ファイルに出力する
+          // JavaScript内のCSSをDOMに挿入する or CSSを別ファイルに出力する
           {
-            loader: MiniCssExtractPlugin.loader,
+            loader: isInlineCss ? "style-loader" : MiniCssExtractPlugin.loader,
           },
           // CSSをJavaScriptに読み込む
           {
