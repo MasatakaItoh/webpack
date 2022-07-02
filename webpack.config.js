@@ -12,6 +12,21 @@ module.exports = {
   module: {
     rules: [
       {
+        test: /\.pug/,
+        use: [
+          {
+            loader: "html-loader",
+          },
+          // pugファイルをHTMLに変換する
+          {
+            loader: "pug-html-loader",
+            options: {
+              pretty: true,
+            },
+          },
+        ],
+      },
+      {
         test: /\.css/,
         use: [
           // JavaScript内のCSSをDOMに挿入する
@@ -45,7 +60,12 @@ module.exports = {
     }),
     // HTMLファイルを生成する
     new HtmlWebpackPlugin({
-      template: "./src/templates/index.html",
+      template: "./src/templates/index.pug",
+      filename: "index.html",
+    }),
+    new HtmlWebpackPlugin({
+      template: "./src/templates/access.pug",
+      filename: "access.html",
     }),
     // buildのたびに、output.pathディレクトリ内のすべてのファイルを削除する
     new CleanWebpackPlugin(),
